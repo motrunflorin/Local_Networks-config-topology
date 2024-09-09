@@ -1,0 +1,8 @@
+# task 1
+auto eth0
+iface eth0
+        address 172.18.$C.70/29
+        gateway 172.18.$C.65
+
+	# task 3
+        up cat /etc/hosts.orig > /etc/hosts

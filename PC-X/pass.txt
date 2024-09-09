@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wget -q -r --user "corina" --password "RL2023" http://host/.secret/
+find ./host -type f -name 'password.txt' | xargs cat
+rm -rf ./host

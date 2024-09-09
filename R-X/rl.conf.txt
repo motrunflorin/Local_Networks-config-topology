@@ -1,0 +1,13 @@
+# task 1
+auto eth-host
+iface eth-host
+        address 10.11.$B.6/30
+        gateway 10.11.$B.5
+
+	# task 3
+        up cat /etc/hosts.orig > /etc/hosts
+
+# task 1
+auto eth-pc-x
+iface eth-pc-x
+        address 172.18.$C.65/29

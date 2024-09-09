@@ -1,0 +1,22 @@
+# task 1
+auto eth-r0
+iface eth-r0
+        address 10.11.$B.1/30
+        up ip route add 10.13.$A.0/24 via 10.11.$B.2
+        
+	# task 4
+	up iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+	# task 6
+	up iptables -t nat -A PREROUTING -p udp --dport (6000 + $K) -j DNAT --to-destination 172.18.$C.70:8926
+
+# task 2
+auto eth-r0
+iface eth-r0
+        address fec0:5017:$C:$D::1/64
+
+# task 1
+auto eth-r-x
+iface eth-r-x
+        address 10.11.$B.5/30
+        up ip route add 172.18.$C.64/29 via 10.11.$B.6

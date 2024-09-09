@@ -1,0 +1,14 @@
+# task 1
+auto eth0
+iface eth0
+        address 10.13.$A.130/25
+        gateway 10.13.$A.129
+
+	# task 3
+        up cat /etc/hosts.orig > /etc/hosts
+
+# task 2
+auto eth0
+iface eth0
+        address 2023:e666:$B:$A:20::2/80
+        gateway 2023:e666:$B:$A:20::1

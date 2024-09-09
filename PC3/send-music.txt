@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Search for files matching the pattern and loop through them
+find . -regex ".*/[A-Z]+\.mp3" -type f | while read -r file; do
+    # Use curl to upload each file via FTP
+    curl -T "$file" -u fs:'5$4l0m' ftp://PC1/music/
+done

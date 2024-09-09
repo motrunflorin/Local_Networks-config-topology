@@ -1,0 +1,52 @@
+# task 1
+auto eth-host
+iface eth-host
+        address 10.11.$B.2/30
+        gateway 10.11.$B.1
+
+	# task 3
+        up cat /etc/hosts.orig > /etc/hosts
+
+        # task 5
+        up iptables -t nat -A PREROUTING -p tcp --dport (14000 + $E) -j DNAT --to-destination 10.13.$A.2:22
+	up iptables -t nat -A PREROUTING -p tcp --dport (14000 + $F) -j DNAT --to-destination 10.13.$A.130:22
+	up iptables -t nat -A PREROUTING -p tcp --dport (14000 + $G) -j DNAT --to-destination 10.13.$A.3:22
+
+	# task 6
+	up iptables -A FORWARD -s 10.13.$A.3 -p tcp --dport ssh -j REJECT
+	up iptables -A FORWARD -s 10.13.$A.3 -p tcp --dport smtp -j REJECT
+
+	up iptables -A FORWARD -s 10.13.$A.0/24 -d 172.18.$C.70 -p udp --dport 8926 -j REJECT
+
+	up iptables -A FORWARD -s 10.13.$A.130 -m state --state ESTABLISHED -j ACCEPT
+	up iptables -A FORWARD -d 10.13.$A.130 -m state --state ESTABLISHED -j ACCEPT
+	up iptables -A FORWARD -d 10.13.$A.130 -p icmp -j ACCEPT
+	up iptables -A FORWARD -d 10.13.$A.130 -p tcp --dport ssh -j ACCEPT
+	up iptables -A FORWARD -d 10.13.$A.130 -j REJECT
+
+# task 2
+auto eth-host
+iface eth-host
+        address fec0:5017:$C:$D::2/64
+        gateway fec0:5017:$C:$D::1
+
+# task 1
+auto eth-sw.10
+iface eth-sw.10
+        address 10.13.$A.1/25
+
+# task 2
+auto eth-sw.10
+iface eth-sw.10
+        address 2023:e666:$B:$A:10::1/80
+
+# task 1
+auto eth-sw.20
+iface eth-sw.20
+        address 10.13.$A.129/25
+
+# task 2
+auto eth-sw.20
+iface eth-sw.20
+        address 2023:e666:$B:$A:20::1/80
+
