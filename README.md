@@ -1,4 +1,5 @@
 Topology & Infrastructure
+
 In the topology, you have the host routers (the VM hosting the entire infrastructure), Router0 (the container is named R0), and Router-X (under the ID R-X), as well as PC1, PC2, PC3 connected to SW (the switch – there’s nothing to configure on it) through two VLANs (10 and 20) and PC-X (network with R-X).
 
 Note: Due to technical reasons, the device identifiers Router0 and Router-X are shortened to R0 and R-X, respectively. Use the shortened names ONLY WHEN connecting to the container (via the go command or Docker commands if necessary); otherwise, use the full name for everything else (e.g., alias/hosts).
@@ -7,6 +8,7 @@ Fun fact: VLAN9 is the network from OpenStack; if running locally, it will be th
 You will need to complete the first four exercises in order. These exercises will eventually provide Internet connectivity, and the rest will depend on them.
 
 Persistent Configurations
+
 All configurations must be persistent. They should remain active even after the virtual machine reboots.
 To modify specific files in Docker containers (e.g., /etc/hosts, /etc/resolv.conf), you must use an init script or an ifupdown-ng hook. Appropriate references will be provided in the exercises where this is required. For persistent configuration, both the host and containers come pre-installed with ifupdown-ng.
 
